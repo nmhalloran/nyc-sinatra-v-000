@@ -15,12 +15,16 @@ class FiguresController < ApplicationController
       @figure.titles << Title.find_or_create_by(name: params["title"]["name"])
     end
     @figure.landmark_ids = params["figure"]["landmark_ids"]
+    if !params["landmark"]["name"].empty? && !Landmark.all.detect {|landmark| landmark.name == params["landmark"]["name"]}
+      @figure.landmarks << Landmark.find_or_create_by(name: params["landmark"]["name"])
+    end
     @figure.save
     redirect to "/figures/#{@figure.slug}"
   end
 
   get '/figures/:slug' do
     @figure = Figure.find_by_slug(params[:slug])
-    erb :"/figures/show"
+    binding.pry
+    erb :'/figures/show'
   end
 end
