@@ -1,7 +1,7 @@
 class FiguresController < ApplicationController
 
   get '/figures' do
-    erb :index
+    erb :'/figures/index'
   end
 
   get '/figures/new' do
@@ -19,12 +19,11 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.find_or_create_by(name: params["landmark"]["name"])
     end
     @figure.save
-    redirect to "/figures/#{@figure.slug}"
+    redirect to "/figures/#{@figure.id}"
   end
 
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
-    binding.pry
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/show'
   end
 end
