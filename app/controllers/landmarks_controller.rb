@@ -20,7 +20,7 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    @landmark = Landmark.create_by(name: params["landmark"]["name"])
+    @landmark = Landmark.create(name: params["landmark"]["name"])
     @landmark.figure = params["landmark"]["figure"]
     @landmark.year_completed = params["landmark"]["year_completed"]
     @landmark.save

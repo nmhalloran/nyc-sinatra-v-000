@@ -4,7 +4,7 @@
   <br></br>
   <h3>Choose Figure</h3>
   <% Figure.all.each do |figure| %>
-  <input type="radio" name="landmark[figure]" id="<%=figure.name%>" value="<%=figure.id%>">
+  <input type="radio" name="landmark[figure]" id="<%=figure.name%>" value="<%=figure.id%>"><%=figure.name%></input>
   <%end%>
   <label for="figure[name]">Or create a new figure: </label>
   <input type="text" name="figure[name]">
